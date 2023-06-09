@@ -26,18 +26,18 @@ def test_simple(driver):
 
     logger.info("Navigating to url: " + url)
     driver.get(url=url)
-    attach_screenshot(driver)
+    # attach_screenshot(driver)
 
     if driver.page_source.find(cookies_dialog_test) != -1:
         logger.info("Cookies use popup is displayed, necessary to click 'Accept all'")
         driver.find_element(by=By.XPATH, value="//button[.='Accept all']").click()
-        attach_screenshot(driver)
+        # attach_screenshot(driver)
 
     logger.info("Performing search with value: " + search_value)
     search_field: WebElement = driver.find_element(by=By.XPATH, value="//input[@name='q']")
     search_field.send_keys(search_value)
     search_field.send_keys(Keys.ENTER)
-    attach_screenshot(driver)
+    # attach_screenshot(driver)
 
     logger.info("Verify first search result contains: " + search_value)
     first_link: WebElement = driver.find_element(by=By.XPATH, value="//*[@id='search']//a")
